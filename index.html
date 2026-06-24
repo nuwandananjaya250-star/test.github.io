@@ -1,1 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuwan Dhananjaya | Cyber Security Portfolio</title>
+    <style>
+        /* Modern Cyber Security Dark Palette */
+        :root {
+            --bg-color: #0a0f1d;
+            --card-bg: #111a2e;
+            --accent-color: #00ffcc;
+            --text-main: #ffffff;
+            --text-secondary: #94a3b8;
+            --border-color: #1e293b;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(10, 15, 29, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+        }
+
+        nav .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Section Layouts */
+        section {
+            padding: 6rem 5% 4rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--text-main);
+            border-left: 4px solid var(--accent-color);
+            padding-left: 10px;
+        }
+
+        /* Hero / Professional Statement Section */
+        #hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 90vh;
+            padding-top: 2rem;
+            gap: 2rem;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-text h1 span {
+            color: var(--accent-color);
+        }
+
+        .hero-text h2 {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .hero-text p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            max-width: 600px;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-img {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            border: 3px solid var(--accent-color);
+            object-fit: cover;
+            box-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--accent-color);
+            border: 2px solid var(--accent-color);
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.4);
+        }
+
+        /* Grid Configurations (Education / Experience / Projects) */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 1.8rem;
+            border-radius: 8px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        .card h3 {
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+
+        .card .subtitle {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .badge-list {
+            margin-top: 1rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(0, 255, 204, 0.1);
+            color: var(--accent-color);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Details Layout */
+        .contact-wrapper {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .contact-info strong {
+            color: var(--text-main);
+        }
+
+        .social-links {
+            margin-top: 1.5rem;
+        }
+
+        .social-links .btn {
+            margin-right: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            background-color: var(--bg-color);
+        }
+
+        /* Mobile Responsive Breakpoints */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                padding: 0.8rem 5%;
+            }
+            
+            nav ul { 
+                margin-top: 0.8rem;
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 0.5rem 1rem;
+            }
+
+            nav ul li {
+                margin-left: 0;
+            }
+
+            section {
+                padding: 8rem 5% 3rem 5%;
+            }
+
+            #hero { 
+                flex-direction: column-reverse; 
+                text-align: center; 
+                justify-content: center;
+                /* මෙහි අගය 11rem දක්වා වැඩි කර ඇත, එවිට පින්තූරය Menu එකට යටින් වැසෙන්නේ නැත */
+                padding-top: 11rem; 
+            }
+
+            .hero-text {
+                margin-top: 2rem;
+            }
+
+            .hero-text h1 { 
+                font-size: 2.3rem; 
+            }
+
+            .hero-text h2 {
+                font-size: 1.2rem;
+            }
+
+            .profile-img {
+                width: 220px;
+                height: 220px;
+            }
+
+            .card {
+                padding: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo"><img src="dp.png" height="50px" width="50px" alt="Logo"></div>
+        <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="hero">
+        <div class="hero-text">
+            <h2>Hello, I am</h2>
+            <h1>Nuwan <span>Dhananjaya</span></h1>
+            <h2>Cyber Security & IT Student</h2>
+            <p>
+                I am a highly motivated individual with a strong technical background. 
+                I possess excellent skills in infrastructure troubleshooting, problem-solving, team coordination, 
+                and time management. Driven by analytical thinking, I look forward to contributing effectively 
+                to secure and scale organizational networks.
+            </p>
+            <a href="NuwanCV2.pdf" download class="btn">Download Full CV</a>
+        </div>
+        <div class="hero-image">
+            <img src="profile.png" alt="Nuwan Dhananjaya Photo" class="profile-img">
+        </div>
+    </section>
+
+    <hr style="border-color: var(--border-color); margin: 0 5%;">
+
+    <section id="education">
+        <h2 class="section-title">Education Details</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>BSc (Hons) in Cyber Security</h3>
+                <div class="subtitle">In Progress</div>
+                <p>Developing core skills in networking protocols, professional ethics, security architectures, and secure system implementations.</p>
+            </div>
+            <div class="card">
+                <h3>Diploma in English Language and Literature</h3>
+                <div class="subtitle">Aquinas College (2024 - 2026)</div>
+                <p>Specializing in classic and contemporary literature, advanced communication skills, and critical professional analysis.</p>
+            </div>
+            <div class="card">
+                <h3>Diploma in Human Resource Management</h3>
+                <div class="subtitle">IMBS Green Campus (2024 - 2025)</div>
+                <p>Comprehensive curriculum covering core recruitment operations, employee relations, and organizational psychology dynamics.</p>
+            </div>
+        </div>
+    </section>
+
+    <hr style="border-color: var(--border-color); margin: 0 5%;">
+
+    <section id="experience">
+        <h2 class="section-title">Professional Experience</h2>
+        <div class="grid-container">
+            <div class="card" style="grid-column: 1 / -1;">
+                <h3>IT Officer</h3>
+                <div class="subtitle">Richard Pieris Arpico PLC (1+ Year Experience)</div>
+                <p>
+                    Actively managed day-to-day corporate information systems infrastructure. Developed hands-on capabilities 
+                    in network administration, large-scale data analysis frameworks, and hardware/software troubleshooting 
+                    protocols designed to optimize operational business uptime.
+                </p>
+                <div class="badge-list" style="margin-top: 1.5rem;">
+                    <span class="badge">Network Management</span>
+                    <span class="badge">Data Analysis</span>
+                    <span class="badge">Software Troubleshooting</span>
+                    <span class="badge">Infrastructure Security</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr style="border-color: var(--border-color); margin: 0 5%;">
+
+    <section id="projects">
+        <h2 class="section-title">Project Work</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>Personal Portfolio Development</h3>
+                <div class="subtitle">Academic Assignment</div>
+                <p>Designed and built a responsive personal portfolio using semantic HTML5 and custom CSS layouts to showcase technical qualifications and competencies.</p>
+                <div class="badge-list">
+                    <span class="badge">HTML5</span>
+                    <span class="badge">CSS3</span>
+                    <span class="badge">Responsive Design</span>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Network Packet Analyzer & Monitor</h3>
+                <div class="subtitle">Academic Lab Project</div>
+                <p>Constructed a basic packet inspection tool framework to parse local network traffic profiles, scanning for anomalous behavior and common network exploits.</p>
+                <div class="badge-list">
+                    <span class="badge">Networking</span>
+                    <span class="badge">Wireshark</span>
+                    <span class="badge">Traffic Analysis</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr style="border-color: var(--border-color); margin: 0 5%;">
+
+    <section id="achievements">
+        <h2 class="section-title">Achievements & Activities</h2>
+        <div class="grid-container">
+            <div class="card" style="grid-column: 1 / -1;">
+                <h3>Academic & Professional Growth Focus</h3>
+                <div class="subtitle">Continuous Professional Development</div>
+                <p>Consistently matching theoretical assignments under the CCS1310 curriculum with production infrastructure environments to optimize structural workflow security.</p>
+            </div>
+        </div>
+    </section>
+
+    <hr style="border-color: var(--border-color); margin: 0 5%;">
+
+    <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <p><strong>Email:</strong> dananjayanuwan304@gmail.com</p>
+                <p><strong>Phone:</strong> +94 717 724 856</p>
+                <p><strong>Address:</strong> 144/E Kandaliyaddapaluwa, Ganemulla (11020)</p>
+            </div>
+            <div class="social-links">
+                <a href="https://github.com/nuwandananjaya250-star" target="_blank" class="btn">GitHub Profile</a>
+                <a href="https://www.linkedin.com/in/nuwan-dananjaya-317273224" target="_blank" class="btn">LinkedIn Profile</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p><b>&copy; 2026 Nuwan Dhananjaya. All Rights Reserved.</b></p>
+    </footer>
+
+</body>
+</html>
